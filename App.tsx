@@ -1,5 +1,4 @@
 import React from 'react';
-import AppLoading from 'expo-app-loading';
 import * as SplashScreen from 'expo-splash-screen'
 import { StatusBar } from 'expo-status-bar';
 import { ThemeProvider} from 'styled-components';
