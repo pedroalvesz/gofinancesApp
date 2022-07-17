@@ -11,6 +11,7 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.shape};
   padding: 18px 24px;
   margin-bottom: 16px;
+  border-radius: 5px;
 `;
 
 export const Title = styled.Text`

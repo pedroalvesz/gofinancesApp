@@ -2,7 +2,7 @@ import React from 'react';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { HighlightCard } from '../../Components/Cards';
-import { TransactionCard } from '../../Components/TransactionCard';
+import { TransactionCard, TransactionCardProps } from '../../Components/TransactionCard';
 
 
 import { 
@@ -22,10 +22,12 @@ import {
   TransactionCards,
  } from './style'
 
-
+export interface DataListProps extends TransactionCardProps {
+  id: number;
+}
 
 export function Dashboard(){
-  const data = [{
+  const data : DataListProps[] = [{
     id: 1,
     type: 'positive',
     title: "Desenvolvimento de site",
@@ -98,9 +100,8 @@ export function Dashboard(){
           <TransactionsTitle>Listagem</TransactionsTitle>
           <TransactionCards
           data={data}
+          keyExtractor={item =>item.id}
           renderItem={({item}) => <TransactionCard data={item}/>}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{paddingBottom: getBottomSpace()}}
           />
         </TransactionsWrapper>
       </Transactions>
