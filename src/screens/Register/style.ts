@@ -26,6 +26,14 @@ padding-bottom: 20px;
 `;
 
 export const Wrapper = styled.View`
+flex: 1;
 padding: 24px;
 align-items: center;
+justify-content: space-between;
+`;
+
+export const Forms = styled.View`
+`;
+
+export const FormsFooter = styled.View`
 `;

@@ -4,9 +4,12 @@ import {
   Header,
   Title,
   Wrapper,
+  Forms,
+  FormsFooter,
 } from './style'
 
 import { Input } from "../../Components/Forms/Input";
+import { SubmitButton } from "../../Components/Forms/SubmitButton";
 
 export function Register() {
   return(
@@ -15,13 +18,19 @@ export function Register() {
         <Title>Cadastro</Title>
       </Header>
       <Wrapper>
-      <Input
-      placeholder="Nome"
-       />
-       <Input
-      placeholder="Preço"
-       />
+        <Forms>
+          <Input
+          placeholder="Nome"
+          />
+          <Input
+          placeholder="Preço"
+          />
+        </Forms>
+        <FormsFooter>
+          <SubmitButton title="Enviar"/>
+        </FormsFooter>
       </Wrapper>
+      
     </Container>
   )
 }
