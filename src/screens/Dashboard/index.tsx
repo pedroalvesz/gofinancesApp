@@ -1,5 +1,4 @@
 import React from 'react';
-import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { HighlightCard } from '../../Components/Cards';
 import { TransactionCard, TransactionCardProps } from '../../Components/TransactionCard';
@@ -97,7 +96,7 @@ export function Dashboard(){
       </HighlightCards>
       <Transactions>
         <TransactionsWrapper>
-          <TransactionsTitle>Listagem</TransactionsTitle>
+          <TransactionsTitle>Listing</TransactionsTitle>
           <TransactionCards
           data={data}
           keyExtractor={item =>item.id}

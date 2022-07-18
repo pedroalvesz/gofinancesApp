@@ -35,7 +35,8 @@ justify-content: space-between;
 export const SelectType = styled.View`
 flex-direction: row;
 justify-content: space-between;
-padding-top: 8px;
+margin-top: 8px;
+margin-bottom: 16px;
 `;
 
 export const Forms = styled.View`

@@ -10,8 +10,9 @@ import {
 } from './style'
 
 import { Input } from "../../Components/Forms/Input";
-import { SubmitButton } from "../../Components/Forms/SubmitButton";
 import { TransactionTypeButton } from "../../Components/Forms/TransactionTypeButton";
+import {CategoryButton} from "../../Components/Forms/CategorySelectButton"
+import { SubmitButton } from "../../Components/Forms/SubmitButton";
 
 export function Register() {
   //Criei o Estado que diz qual bottão ta sendo selecionado
@@ -24,15 +25,15 @@ export function Register() {
   return(
     <Container>
       <Header>
-        <Title>Cadastro</Title>
+        <Title>Register</Title>
       </Header>
       <Wrapper>
         <Forms>
           <Input
-          placeholder="Nome"
+          placeholder="Name"
           />
           <Input
-          placeholder="Preço"
+          placeholder="Price"
           />
           <SelectType>
             <TransactionTypeButton 
@@ -47,10 +48,11 @@ export function Register() {
             onPress={() => handleTransactionTypeSelect('outcome')}
             isActive={transactionType === 'outcome'}
             />
-          </SelectType> 
+          </SelectType>
+          <CategoryButton title="Category"/>
         </Forms>
         <FormsFooter>
-          <SubmitButton title="Enviar"/>
+          <SubmitButton title="Add"/>
         </FormsFooter>
       </Wrapper>
       
