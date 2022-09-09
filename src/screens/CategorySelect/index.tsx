@@ -1,9 +1,29 @@
 import React from "react";
 
-import { Container } from "./style";
+import { 
+Container,
+Header,
+Title,
+} from "./style";
 
-export function CategorySelect() {
+interface Category {
+  key: string;
+  name: string;
+}
+
+interface Props {
+  category: string;
+  setCategory: (category: Category) => void;
+  closeCategory: () => void;
+}
+
+export function CategorySelect({ category, setCategory, closeCategory} : Props) {
   return(
-    <Container></Container>
+    <Container>
+      <Header>
+        <Title>Category</Title>
+      </Header>
+      
+    </Container>
   )
 }
