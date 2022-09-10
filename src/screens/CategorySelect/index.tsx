@@ -26,7 +26,14 @@ interface Props {
   handleCloseModal: () => void;
 }
 
+
+
 export function CategorySelect({ category, setCategory, handleCloseModal} : Props) {
+
+  function handleSetCategory (category: Category) {
+    setCategory(category)
+  }
+
   return(
     <Container>
       <Header>
@@ -37,7 +44,10 @@ export function CategorySelect({ category, setCategory, handleCloseModal} : Prop
       data={categories}
       keyExtractor={(item) => item.key}
       renderItem={({item}) => (
-        <CategoryContainer>
+        <CategoryContainer
+        onPress={() => handleSetCategory(item)}
+        isActive={category.key === item.key}
+        >
           <Icon name={item.icon}/>
           <Name>{item.name}</Name>
         </CategoryContainer>
