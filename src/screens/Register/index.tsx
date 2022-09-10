@@ -1,4 +1,12 @@
 import React, {useState} from "react";
+import { Modal } from 'react-native'
+
+import { Input } from "../../Components/Forms/Input";
+import { TransactionTypeButton } from "../../Components/Forms/TransactionTypeButton";
+import { CategorySelectButton } from "../../Components/Forms/CategorySelectButton"
+import { SubmitButton } from "../../Components/Forms/SubmitButton";
+import { CategorySelect } from "../CategorySelect";
+
 import {
   Container,
   Header,
@@ -9,17 +17,27 @@ import {
   FormsFooter,
 } from './style'
 
-import { Input } from "../../Components/Forms/Input";
-import { TransactionTypeButton } from "../../Components/Forms/TransactionTypeButton";
-import {CategoryButton} from "../../Components/Forms/CategorySelectButton"
-import { SubmitButton } from "../../Components/Forms/SubmitButton";
 
 export function Register() {
   //Criei o Estado que diz qual bottão ta sendo selecionado
-  const [transactionType, setTransactionType] =useState('')
+  const [transactionType, setTransactionType] = useState('');
+  const [categoryModalOpen, setCategoryModalOpen] = useState(false);
+
+  const [category, setCategory] = useState({
+    key: 'category',
+    name: 'Category',
+  })
 
   function handleTransactionTypeSelect(type: string) {
     setTransactionType(type)
+  }
+
+  function handleOpenModal () {
+    setCategoryModalOpen(true)
+  }
+  
+  function handleCloseModal() {
+    setCategoryModalOpen(false)
   }
 
   return(
@@ -27,6 +45,7 @@ export function Register() {
       <Header>
         <Title>Register</Title>
       </Header>
+
       <Wrapper>
         <Forms>
           <Input
@@ -49,13 +68,26 @@ export function Register() {
             isActive={transactionType === 'outcome'}
             />
           </SelectType>
-          <CategoryButton title="Category"/>
+          <CategorySelectButton 
+          title="Category"
+          onPress={handleOpenModal}
+          />
+
         </Forms>
+
         <FormsFooter>
           <SubmitButton title="Add"/>
         </FormsFooter>
+
       </Wrapper>
       
+      <Modal visible={categoryModalOpen}>
+        <CategorySelect
+        category={category}
+        setCategory={setCategory}
+        handleCloseModal={handleCloseModal}
+        />
+      </Modal>
     </Container>
   )
 }

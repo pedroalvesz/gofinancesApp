@@ -7,11 +7,12 @@ import {
 
 interface CategoryButtonProps {
   title: string
+  onPress: () => void;
 }
 
-export function CategoryButton({title}: CategoryButtonProps) {
+export function CategorySelectButton({title, onPress}: CategoryButtonProps) {
   return(
-    <Container>
+    <Container onPress={onPress}>
       <CategoryTitle>{title}</CategoryTitle>
       <Icon name="chevron-down"/>
     </Container>

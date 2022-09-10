@@ -6,11 +6,12 @@ import {
 
 interface SubmitButtonProps {
   title: string;
+  onPress: () => void;
 }
 
-export function SubmitButton({title} : SubmitButtonProps) {
+export function SubmitButton({title, onPress} : SubmitButtonProps) {
   return(
-    <Container>
+    <Container onPress={onPress}>
       <ButtonText>{title}</ButtonText>
     </Container>
   )

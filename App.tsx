@@ -11,7 +11,7 @@ import {
 } from '@expo-google-fonts/poppins'; 
 
 import theme from './src/global/styles/theme';
-import { CategorySelect } from './src/screens/CategorySelect';
+import { Register } from './src/screens/Register';
 
 export default function App() {
   SplashScreen.preventAutoHideAsync();
@@ -31,7 +31,7 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <StatusBar style='light'/>
-        <CategorySelect/>
+        <Register/>
       </ThemeProvider>
     </>
   )
