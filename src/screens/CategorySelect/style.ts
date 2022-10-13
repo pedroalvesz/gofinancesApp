@@ -36,9 +36,7 @@ padding: ${RFValue(15)}px;
 flex-direction: row;
 align-items: center;
 
-background-color: ${({ isActive }) =>
-isActive ? theme.colors.success_light : theme.colors.background
-};
+background-color: ${({ isActive }) => isActive ? theme.colors.success_light : theme.colors.background};
 `;
 
 export const Icon = styled(Feather)`
