@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import { Modal } from 'react-native'
+import { useForm } from 'react-hook-form'
 
-import { Input } from "../../Components/Forms/Input";
+import { InputForm } from "../../Components/Forms/InputForm";
 import { TransactionTypeButton } from "../../Components/Forms/TransactionTypeButton";
 import { CategorySelectButton } from "../../Components/Forms/CategorySelectButton"
 import { SubmitButton } from "../../Components/Forms/SubmitButton";
@@ -17,6 +18,10 @@ import {
   FormsFooter,
 } from './style'
 
+interface FormData {
+  name: string;
+  amount: number;
+}
 
 export function Register() {
   //Criei o Estado que diz qual bottão ta sendo selecionado
@@ -27,6 +32,12 @@ export function Register() {
     key: 'category',
     name: 'Category',
   })
+
+  const {control, handleSubmit} = useForm()
+
+  function handleRegister(FormData) {
+    
+  }
 
   function handleTransactionTypeSelect(type: string) {
     setTransactionType(type)
@@ -48,10 +59,14 @@ export function Register() {
 
       <Wrapper>
         <Forms>
-          <Input
+          <InputForm
+          name="name"
+          control={control}
           placeholder="Name"
           />
-          <Input
+          <InputForm
+          name="amount"
+          control={control}
           placeholder="Price"
           />
           <SelectType>
@@ -76,7 +91,10 @@ export function Register() {
         </Forms>
 
         <FormsFooter>
-          <SubmitButton title="Add"/>
+          <SubmitButton
+            title="Add"
+            onPress={handleSubmit(handleRegister)}
+          />
         </FormsFooter>
 
       </Wrapper>
