@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import { Modal, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native'
 import { useForm } from 'react-hook-form'
+import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup'
 
 import { InputForm } from "../../Components/Forms/InputForm";
 import { TransactionTypeButton } from "../../Components/Forms/TransactionTypeButton";
@@ -18,13 +20,17 @@ import {
   FormsFooter,
 } from './style'
 
+const schema = Yup.object().shape({
+  name: Yup.string().required("Please insert a name"),
+  amount: Yup.number().typeError("Please insert a valid number").positive("Amount must be positive").required("Please insert an amount"),
+})
+
 interface FormData {
   name: string;
   amount: number;
 }
 
 export function Register() {
-  //Criei o Estado que diz qual bottão ta sendo selecionado
   const [transactionType, setTransactionType] = useState('');
   const [categoryModalOpen, setCategoryModalOpen] = useState(false);
 
@@ -33,14 +39,16 @@ export function Register() {
     name: 'Category',
   })
 
-  const {control, handleSubmit} = useForm()
+  const {control, handleSubmit, formState: { errors}} = useForm({
+    resolver: yupResolver(schema)
+  })
 
   function handleRegister(form: FormData) {
     if(!transactionType)
-      return Alert.alert('Select a Transaction Type.')
+      return Alert.alert('Select a transaction type')
 
     if(category.key === 'category')
-      return Alert.alert('Select your category.')
+      return Alert.alert('Select your category')
   }
 
   function handleTransactionTypeSelect(type: string) {
@@ -71,12 +79,14 @@ export function Register() {
             placeholder="Name"
             autoCapitalize="sentences"
             autoCorrect={false}
+            error={errors.name && errors.name.message}
             />
             <InputForm
             name="amount"
             control={control}
             placeholder="Price"
             keyboardType="numeric"
+            error={errors.amount && errors.amount.message}
             />
             <SelectType>
               <TransactionTypeButton 

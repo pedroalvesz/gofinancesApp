@@ -15,7 +15,7 @@ width: ${RFValue(300)}px;
 border-radius: 5px;
 
 padding: 20px 20px;
-padding-bottom: ${RFValue(42)}px;
+padding-bottom: ${RFValue(20)}px;
 margin-right: 16px;
 `;
 
@@ -46,7 +46,6 @@ export const Icon = styled(Feather)<CardProps>`
   ${({type}) => type === 'total' && css`
   color: ${({theme}) => theme.colors.shape}
   `};
-  //se o type for o que eu estou indicando, então aplique tal css
 `;
 
 export const Footer = styled.View` 

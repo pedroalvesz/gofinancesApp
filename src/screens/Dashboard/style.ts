@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { FlatList } from 'react-native';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 import { Feather } from '@expo/vector-icons'
+import {BorderlessButton} from 'react-native-gesture-handler' 
 
 import { 
   getStatusBarHeight,
@@ -59,6 +60,10 @@ export const UserName = styled.Text`
   color: ${({theme}) => theme.colors.shape};
 `;
 
+export const LogoutButton = styled(BorderlessButton)`
+  
+`;
+
 export const UserLogout = styled(Feather)`
   color: ${({theme}) => theme.colors.secondary};
 `;
@@ -77,7 +82,7 @@ export const HighlightCards = styled.ScrollView.attrs({
 export const Transactions = styled.View`
 `;
 export const TransactionsWrapper = styled.View`
-  margin-top: ${RFValue(84)}px;
+  margin-top: ${RFValue(64)}px;
   padding: 0px 24px;
 `;
 export const TransactionsTitle = styled.Text`
