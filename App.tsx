@@ -11,6 +11,10 @@ import {
 } from '@expo-google-fonts/poppins'; 
 
 import theme from './src/global/styles/theme';
+
+import {NavigationContainer} from "@react-navigation/native"
+import { AppRoutes } from './src/routes/app.routes';
+
 import { Register } from './src/screens/Register';
 
 export default function App() {
@@ -21,7 +25,6 @@ export default function App() {
     Poppins_700Bold
   });
 
-  //se o fonts loaded for false
   if(!fontsLoaded){
     return null;
   }
@@ -30,8 +33,10 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <StatusBar style='light'/>
-        <Register/>
+        <NavigationContainer>
+          <StatusBar style='light'/>
+          <AppRoutes/>
+        </NavigationContainer>
       </ThemeProvider>
     </>
   )
