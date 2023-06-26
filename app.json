@@ -3,7 +3,7 @@
     "name": "gofinancesApp",
     "slug": "gofinancesApp",
     "scheme": "gofinancesApp",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "icon": "./assets/logo.png",
     "splash": {
       "image": "./assets/splash.png",
