@@ -5,6 +5,11 @@
     "scheme": "gofinancesApp",
     "version": "1.0.0",
     "icon": "./assets/logo.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#5636D3"
+    },
     "assetBundlePatterns": [
       "**/*"
     ],
