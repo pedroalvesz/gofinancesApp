@@ -11,6 +11,7 @@ import {
 
 import {DataListProps} from './index'
 
+
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background};
@@ -61,7 +62,6 @@ export const UserName = styled.Text`
 `;
 
 export const LogoutButton = styled(BorderlessButton)`
-  
 `;
 
 export const UserLogout = styled(Feather)`
@@ -93,8 +93,15 @@ export const TransactionsTitle = styled.Text`
   margin-bottom: 16px;
 `;
 export const TransactionCards = styled(
-  FlatList as new() => FlatList<DataListProps>).attrs({
-    showsVerticalScrollIndicator: false,
-    contentContainerStyle: { paddingBottom : getBottomSpace()}
-  })`
-`;
+  FlatList as new () => FlatList<DataListProps>
+  ).attrs({
+  showsVerticalScrollIndicator: false,
+  contentContainerStyle: {
+    paddingBottom: getBottomSpace() + 360
+  }
+})``;
+
+export const LoadContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+`

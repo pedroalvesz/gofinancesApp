@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components'
 import {Feather} from '@expo/vector-icons'
 import { RFValue } from 'react-native-responsive-fontsize';
-import { TouchableOpacity } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
+
 
 interface TransactionProps {
   type: 'income' | 'outcome';
@@ -12,7 +13,7 @@ interface ContainerProps {
   isActive: boolean;
 }
 
-export const Container = styled(TouchableOpacity)<ContainerProps>`
+export const Container = styled(RectButton)<ContainerProps>`
 width: ${RFValue(150)}px;
 
 border-width: ${({isActive}) => isActive ? 0 : 1.5}px;

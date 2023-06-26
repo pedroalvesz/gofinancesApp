@@ -23,7 +23,7 @@ export const Amount = styled.Text<TransactionsProps>`
   font-family: ${({theme}) => theme.fonts.regular};
   font-size: ${RFValue(20)}px;
   color: ${({theme, type}) => 
-  type === 'positive' ? theme.colors.success : theme.colors.attention};
+  type === 'income' ? theme.colors.success : theme.colors.attention};
 `;
 
 export const Footer = styled.View`

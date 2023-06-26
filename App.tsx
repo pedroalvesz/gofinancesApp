@@ -12,12 +12,13 @@ import {
 
 import theme from './src/global/styles/theme';
 
-import {NavigationContainer} from "@react-navigation/native"
-import { AppRoutes } from './src/routes/app.routes';
-
-import { Register } from './src/screens/Register';
+import { AuthContextProvider } from './src/contexts/AuthContext';
+import { Routes } from './src/routes';
+import { useAuth } from './src/hooks/useAuth';
 
 export default function App() {
+  const {loadingUser} = useAuth()
+
   SplashScreen.preventAutoHideAsync();
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -25,7 +26,7 @@ export default function App() {
     Poppins_700Bold
   });
 
-  if(!fontsLoaded){
+  if(!fontsLoaded && !loadingUser){
     return null;
   }
   SplashScreen.hideAsync();
@@ -33,10 +34,10 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <NavigationContainer>
-          <StatusBar style='light'/>
-          <AppRoutes/>
-        </NavigationContainer>
+        <StatusBar style='light'/>
+        <AuthContextProvider>
+          <Routes/>
+        </AuthContextProvider>
       </ThemeProvider>
     </>
   )

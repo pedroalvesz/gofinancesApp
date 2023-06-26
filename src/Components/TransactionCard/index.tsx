@@ -9,17 +9,13 @@ import {
   Date,
   CategoryText,
 } from './style'
-
-interface Category {
-  name: string;
-  icon: string;
-}
+import { categories } from "../../../utils/categories";
 
 export interface TransactionCardProps {
-  type: 'positive' | 'negative';
-  title: string;
+  transactionType : 'income' | 'outcome';
+  name: string;
   amount: string;
-  category: Category;
+  category: string;
   date: string;
 }
 
@@ -28,20 +24,23 @@ interface Data {
 }
 
 export function TransactionCard({data} : Data) {
+  // pega a primeira posição e renomeia para category  
+  const [category] = categories.filter(item => item.key === data.category);
+
   return(
     //se o data.type for negative então 
     <Container>
       <Title>
-        {data.title}
+        {data.name}
       </Title>
-      <Amount type={data.type}>
-        {data.type === 'negative' && '- '}
+      <Amount type={data.transactionType}>
+        {data.transactionType === 'outcome' && '- '}
         {data.amount}
       </Amount>
       <Footer>
         <Category>
-          <Icon name={data.category.icon} size={20}/>
-          <CategoryText>{data.category.name}</CategoryText>
+          <Icon name={category.icon} size={20}/>
+          <CategoryText>{category.name}</CategoryText>
         </Category>
         <Date>{data.date}</Date>
       </Footer>

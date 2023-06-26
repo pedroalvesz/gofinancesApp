@@ -2,9 +2,16 @@
   "expo": {
     "name": "gofinancesApp",
     "slug": "gofinancesApp",
+    "scheme": "gofinancesApp",
     "version": "1.0.0",
+    "icon": "./assets/logo.png",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "3d24d5ed-d791-4282-b433-ad6d217604db"
+      }
+    }
   }
 }

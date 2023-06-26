@@ -1,6 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { Modal, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native'
+import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage"
 import { useForm } from 'react-hook-form'
+import uuid from 'react-native-uuid'
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup'
 
@@ -19,6 +22,7 @@ import {
   SelectType,
   FormsFooter,
 } from './style'
+import { useAuth } from "../../hooks/useAuth";
 
 const schema = Yup.object().shape({
   name: Yup.string().required("Please insert a name"),
@@ -33,22 +37,55 @@ interface FormData {
 export function Register() {
   const [transactionType, setTransactionType] = useState('');
   const [categoryModalOpen, setCategoryModalOpen] = useState(false);
+  const {user} = useAuth()
 
   const [category, setCategory] = useState({
     key: 'category',
     name: 'Category',
   })
 
+  const dataKey = `@gofinances:transactions_user=${user.id}`
+
+  const navigation = useNavigation()
+
   const {control, handleSubmit, formState: { errors}} = useForm({
     resolver: yupResolver(schema)
   })
 
-  function handleRegister(form: FormData) {
+  async function handleRegister(form: FormData) {
     if(!transactionType)
       return Alert.alert('Select a transaction type')
 
     if(category.key === 'category')
       return Alert.alert('Select your category')
+
+    const newTransaction = {
+      id: String(uuid.v4()),
+      name: form.name,
+      amount: form.amount,
+      transactionType,
+      category: category.key,
+      date: new Date()
+    }
+
+    try {
+      const data = await AsyncStorage.getItem(dataKey)
+      const storedData = data ? JSON.parse(data) : []
+      const currentData = [...storedData, newTransaction]
+
+      await AsyncStorage.setItem(dataKey, JSON.stringify(currentData))
+
+      setTransactionType('')
+      setCategory({
+        key: 'category',
+        name: 'Category',
+      })
+
+      navigation.navigate("Listagem");
+      
+    } catch (error) {
+      Alert.alert("Não foi possível salvar")
+    }
   }
 
   function handleTransactionTypeSelect(type: string) {
@@ -62,6 +99,14 @@ export function Register() {
   function handleCloseModal() {
     setCategoryModalOpen(false)
   }
+
+  useEffect(() => {
+    async function loadData() {
+      const data = await AsyncStorage.getItem(dataKey)
+    }
+
+    loadData()
+  },[])
 
   return(
     //Quando clicar em qualquer lugar da tela, fecha o teclado que está aberto.
