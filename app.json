@@ -3,7 +3,7 @@
     "name": "gofinancesApp",
     "slug": "gofinancesApp",
     "scheme": "gofinancesApp",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "icon": "./assets/logo.png",
     "splash": {
       "image": "./assets/splash.png",
@@ -12,10 +12,26 @@
     },
     "assetBundlePatterns": [
       "**/*"
-    ],
+    ],    
+    "ios": {
+      "supportsTablet": true,
+      "runtimeVersion": "1.0.3"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#5636D3"
+      }
+    },
     "extra": {
       "eas": {
-        "projectId": "7123c342-3be4-4408-a31d-8a72bf0a2dab"
+        "projectId": "7123c342-3be4-4408-a31d-8a72bf0a2dab",
+        "icon": "./assets/logo.png",
+        "splash": {
+          "image": "./assets/splash.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#5636D3"
+        }
       }
     }
   }
