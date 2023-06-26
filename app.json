@@ -3,7 +3,7 @@
     "name": "gofinancesApp",
     "slug": "gofinancesApp",
     "scheme": "gofinancesApp",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "icon": "./assets/logo.png",
     "splash": {
       "image": "./assets/splash.png",
@@ -15,7 +15,7 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "3d24d5ed-d791-4282-b433-ad6d217604db"
+        "projectId": "7123c342-3be4-4408-a31d-8a72bf0a2dab"
       }
     }
   }
